@@ -1,0 +1,72 @@
+.header {
+    background-color: rgba(255, 255, 255, 1);
+    display: flex;
+    justify-content: space-between;
+}
+.header-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    line-height: 28px;
+    letter-spacing: 0em;
+    text-align: left;
+    margin: 20px;
+    align-self: center;
+}
+
+.header-button{
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    line-height: 28px;
+    letter-spacing: 0em;
+    text-align: left;
+    border: none;
+    background-color: rgba(255, 255, 255, 1);
+}
+
+.header-buttons{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sign-in {
+    margin: 22px 19px 22px 0;
+}
+.sign-up {
+    color: rgba(82, 196, 26, 1);
+    border: 1px solid rgba(82, 196, 26, 1);
+    border-radius: 5px;
+    margin: 16px 22px 12px 0;
+    padding: 6px 18px 10px 18px;
+}
+
+.btn-create-article{
+    font-size: 14px;
+    line-height: 22px;
+    color: #52C41A;
+    border: 1px solid rgba(82, 196, 26, 1);
+    border-radius: 5px;
+}
+
+.btn-log-out{
+    color: rgba(0, 0, 0, 0.75);
+    border: 1px solid rgba(0, 0, 0, 0.75);
+    border-radius: 5px;
+    padding: 6px 18px 10px 18px;
+    margin-right: 22px;
+}
+
+.user {
+    display: flex;
+    align-items: center;
+    margin: 0 25px 0 25px;
+}
+.user-name {
+    margin-right: 13px;
+}
+
+.user-avatar{
+    height: 46px;
+    width: 46px;
+    border-radius: 50%;
+}
