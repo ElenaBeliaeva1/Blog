@@ -8,10 +8,10 @@ import './createArticle.scss'
 const CreateArticle = () => {
   const deleteTag = (tag, tagList) => tagList.filter((el) => el !== tag)
   const addTag = (tag, tagList) => {
-    if (tag.length > 0) {
+    if (tag.match(/\S+/)) {
       setTags([...tagList, tag])
-      setValue('')
     }
+    setValue('')
   }
 
   const Tag = ({ name }) => {
@@ -58,7 +58,13 @@ const CreateArticle = () => {
           Title
         </label>
         <input
-          {...register('Title', { required: 'The field is required' })}
+          {...register('Title', {
+            required: 'The field is required',
+            pattern: {
+              value: /\S+/,
+              message: 'Title should not consist only of spaces',
+            },
+          })}
           type="text"
           id="title"
           placeholder="Title"

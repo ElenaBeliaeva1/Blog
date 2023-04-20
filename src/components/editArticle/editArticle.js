@@ -15,10 +15,10 @@ const EditArticle = () => {
   const slug = getSlug(window.location.href)
   const deleteTag = (tag, tagList) => tagList.filter((el) => el !== tag)
   const addTag = (tag, tagList) => {
-    if (tag.length > 0) {
+    if (tag.match(/\S+/)) {
       setTags([...tagList, tag])
-      setValue('')
     }
+    setValue('')
   }
 
   const Tag = ({ name }) => {
@@ -75,7 +75,13 @@ const EditArticle = () => {
           Title
         </label>
         <input
-          {...register('Title', { minLength: 1 })}
+          {...register('Title', {
+            minLength: 1,
+            pattern: {
+              value: /\S+/,
+              message: 'Title should not consist only of spaces',
+            },
+          })}
           type="text"
           id="title"
           placeholder="Title"

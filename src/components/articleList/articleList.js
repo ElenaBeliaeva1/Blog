@@ -7,11 +7,12 @@ import ArticleItem from '../articleItem/articleItem'
 import './articleList.scss'
 
 const ArticleList = () => {
-  const [page, setPagePagination] = useState(1)
+  const [page, setPagePagination] = useState(Number(localStorage.getItem('page')))
   const [articles, setArticles] = useState([])
   const [isLoaded, setIsLoaded] = useState(false)
   const [pagesCount, setPagesCount] = useState(50)
   const setPage = (e) => {
+    localStorage.setItem('page', e)
     setPagePagination(e)
     setIsLoaded(false)
     getArticles(e).then((res) => {
@@ -29,12 +30,17 @@ const ArticleList = () => {
   const loadedPage = isLoaded ? (
     <React.Fragment>
       {elements}
-      <Pagination defaultCurrent={1} current={page} total={pagesCount} onChange={(e) => setPage(e)} />
+      <Pagination
+        defaultCurrent={Number(localStorage.getItem('page'))}
+        current={page}
+        total={pagesCount}
+        onChange={(e) => setPage(e)}
+      />
     </React.Fragment>
   ) : (
     <Spin className="loader" size="large" />
   )
-  useEffect(() => setPage(1), [])
+  useEffect(() => setPage(Number(localStorage.getItem('page')) || 1), [])
   useEffect(() => {}, [isLoaded])
   return <div className="article-list">{loadedPage}</div>
 }
